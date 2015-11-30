@@ -13,7 +13,6 @@ WHERE
   <% end %>
 <% end %>
 ORDER BY
-  length(pref_label) ASC,
-  <%= RANK_FUNCTION %>(matchinfo(concepts_fts)) DESC
+  length(pref_label) ASC
 LIMIT  :size
 OFFSET :start

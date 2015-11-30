@@ -19,7 +19,8 @@ How can I use this?
 
 bel.rb provides an [approach to plugins](https://github.com/OpenBEL/bel.rb/wiki/Plugins-in-bel.rb) that is meant to be uncomplicated. The following steps will get you started:
 
-- Install gem with `gem build bel-search-sqlite.gemspec` followed by `gem install bel-search-sqlite-1.0.0.gem`.
+- Build gem with `gem build .gemspec` and install with `gem install bel-search-sqlite-1.0.0.gem`.
+- on JRuby, build gem with `gem build .gemspec-java` and install with `gem install bel-search-sqlite-1.0.0-java.gem`.
 - Now you have this plugin installed and ready for use in bel.rb!
 - With bel.rb installed run the command `bel plugins` to list available plugins.
 
@@ -37,7 +38,7 @@ Resource Search plugins
 ```ruby
 search_plugin = BEL::Resource::Search.plugins[:sqlite]
 
-search_plugin.create_search(:database => 'resources.db')
+search_plugin.create_search(:database_file => 'resources.db')
 ```
 
 - Enjoy FTS goodness with Sqlite!
