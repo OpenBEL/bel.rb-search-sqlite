@@ -24,23 +24,23 @@ module BEL::Resource::Search::Plugins
       # @see BEL::Resource::Search::API#search
       def search(query_expression, concept_type = nil, scheme_uri = nil, species = nil, options = {})
         # required SQL parameters
-        match = query_expression.encode('UTF-8')
-        start = (options.delete(:start) ||  0).to_i
-        size  = options.delete(:size)   || -1
+        size  = options.delete(:size) || -1
         if size.to_i.zero?
           fail ArgumentError.new(":size is zero")
         end
 
         # optional SQL parameters
-        options = {
+        params = {
+          :match        => query_expression.encode('UTF-8'),
+          :start        => (options.delete(:start) || 0).to_i,
+          :size         => size,
           :concept_type => (concept_type ? concept_type.to_s.encode('UTF-8') : nil),
           :scheme_uri   => (scheme_uri ? scheme_uri.to_s.encode('UTF-8') : nil),
           :species      => (species ? species.to_s.encode('UTF-8') : nil),
         }
-        options.keep_if { |key, value| value != nil }
 
         query   = QUERY_TEMPLATE.result(binding)
-        enum    = @db.fetch(query, :match => match, :start => start, :size => size)
+        enum    = @db.fetch(query, params)
 
         if enum.respond_to? :lazy
           enum = enum.lazy

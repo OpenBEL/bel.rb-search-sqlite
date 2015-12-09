@@ -6,7 +6,7 @@ FROM
 WHERE
   concepts_fts MATCH :match
 <% [:concept_type, :scheme_type, :scheme_uri, :species].each do |column| %>
-  <% if options[column] %>
+  <% if params[column] %>
 
   AND <%= column %> = <%= ":#{column}" %>
 
