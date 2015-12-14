@@ -9,6 +9,11 @@ Features
 - Plugs in to bel.rb as a Resource Search API implementation.
 - Efficient full-text searching.
 
+System Requirement
+------------------
+
+- SQLite 3
+
 Todo
 ----
 
