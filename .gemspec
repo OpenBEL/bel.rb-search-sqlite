@@ -38,6 +38,7 @@ Gem::Specification.new do |spec|
 
   spec.platform                 = 'ruby'
   spec.required_ruby_version    = '>= 2.0.0'
+  spec.add_runtime_dependency     'bel',     '~> 0.4'
   spec.add_runtime_dependency     'sequel',  '4.28.0'
   spec.add_runtime_dependency     'sqlite3', '1.3.11'
   spec.post_install_message     = %Q{
