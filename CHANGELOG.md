@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.4.1][0.4.1] - 2015-12-17
 ### Added
 - Added the :exclude_identifier_schemes option to search for concepts where their preferred label is not an identifier. This was added to allows more human-friendly biological identifiers to be returned.
+- Allow [bel.rb][bel.rb] gem dependency within version range 0.4.x < 0.5 (pessimistic version qualifier).
 
 ## 0.4.0 - 2015-12-14
 ### Added
