@@ -1,6 +1,8 @@
 Gem::Specification.new do |spec|
   spec.name                     = 'bel-search-sqlite'
-  spec.version                  = '1.0.0'
+  spec.version                  = File.read(File.join(
+                                    File.expand_path(File.dirname(__FILE__)),
+                                    'VERSION'))
   spec.summary                  = '''
                                     Resource search plugin for bel.rb using Sqlite FTS.
                                   '''.gsub(%r{^\s+}, ' ').gsub(%r{\n}, '')
