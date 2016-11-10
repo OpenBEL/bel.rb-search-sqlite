@@ -1,6 +1,5 @@
 Gem::Specification.new do |spec|
   spec.name                     = 'bel-search-sqlite'
-  spec.version                  = '1.0.0'
   spec.version                  = File.read(File.join(
                                     File.expand_path(File.dirname(__FILE__)),
                                     'VERSION'))
@@ -9,8 +8,7 @@ Gem::Specification.new do |spec|
                                   '''.gsub(%r{^\s+}, ' ').gsub(%r{\n}, '')
   spec.description              = '''
                                     A resource search plugin for bel.rb that uses FTS tables in
-                                    Sqlite to search annotation and namespace values. Built to
-                                    run on MRI to take advantage of C extensions.
+                                    Sqlite to search annotation and namespace values.
                                   '''.gsub(%r{^\s+}, ' ').gsub(%r{\n}, '')
   spec.license                  = 'Apache-2.0'
   spec.authors                  = [
@@ -39,20 +37,27 @@ Gem::Specification.new do |spec|
                                     'README.md',
                                   ]
 
-  spec.platform                 = 'ruby'
-  spec.required_ruby_version    = '>= 2.0.0'
-  spec.add_runtime_dependency     'bel',     '~> 1.0.0'
-  spec.add_runtime_dependency     'sequel',  '4.28.0'
-  spec.add_runtime_dependency     'sqlite3', '1.3.11'
+  if RUBY_ENGINE =~ /jruby/
+		# dependencies when building for JRuby (Java based)
+		spec.platform               = 'java'
+		spec.required_ruby_version  = '>= 2.0.0'
+		spec.add_runtime_dependency   'bel',          '~> 1.0.0'
+		spec.add_runtime_dependency   'sequel',       '4.28.0'
+		spec.add_runtime_dependency   'jdbc-sqlite3', '3.8.11.2'
+  else
+		# dependencies when building for all other platforms (C based)
+		spec.platform               = 'ruby'
+		spec.required_ruby_version  = '>= 2.0.0'
+		spec.add_runtime_dependency   'bel',          '~> 1.0.0'
+		spec.add_runtime_dependency   'sequel',       '4.28.0'
+		spec.add_runtime_dependency   'sqlite3',      '1.3.11'
+  end
+
   spec.post_install_message     = %Q{
 ******************************
 *  bel-search-sqlite plugin  *
 ******************************
 Thank you for installing the bel-search-sqlite plugin to bel.rb.
-
-This plugin is built to run on Ruby and uses sqlite3 + C
-extensions to access a SQLite database for full-text search of
-annotation and namespace values.
 
 To verify the bel-search-sqlite plugin can be used by bel.rb
 execute the bel.rb command:
@@ -67,7 +72,7 @@ To access this within bel.rb execute the following ruby code:
       :database => 'resources.db'
     )
 
-}
+  }
 end
 # vim: ft=ruby ts=2 sw=2:
 # encoding: utf-8
