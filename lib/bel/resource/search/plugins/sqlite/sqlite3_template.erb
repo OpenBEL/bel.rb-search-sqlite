@@ -18,7 +18,7 @@ WHERE
 <% end %>
 
 <% if params[:exact_match] %>
-  AND pref_label = :match
+  AND pref_label = :match COLLATE NOCASE
 <% end %>
 
 ORDER BY
