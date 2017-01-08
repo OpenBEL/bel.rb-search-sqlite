@@ -16,6 +16,11 @@ WHERE
 <% if params[:exclude_identifier_schemes] %>
   AND identifier != pref_label
 <% end %>
+
+<% if params[:exact_match] %>
+  AND pref_label = :match
+<% end %>
+
 ORDER BY
   length(pref_label) ASC
 LIMIT  :size

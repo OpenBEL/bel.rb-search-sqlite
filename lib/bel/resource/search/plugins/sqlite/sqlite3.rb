@@ -37,7 +37,8 @@ module BEL::Resource::Search::Plugins
           :concept_type               => (concept_type ? concept_type.to_s.encode('UTF-8') : nil),
           :scheme_uri                 => (scheme_uri ? scheme_uri.to_s.encode('UTF-8') : nil),
           :species                    => (species ? species.to_s.encode('UTF-8') : nil),
-          :exclude_identifier_schemes => options.delete(:exclude_identifier_schemes)
+          :exclude_identifier_schemes => options.delete(:exclude_identifier_schemes),
+          :exact_match                => options.delete(:exact_match)
         }
 
         query   = QUERY_TEMPLATE.result(binding)
