@@ -14,6 +14,7 @@ Gem::Specification.new do |spec|
   spec.authors                  = [
                                     'Anthony Bargnesi',
                                   ]
+  spec.date                     = %q{2017-01-13}
   spec.email                    = [
                                     'abargnesi@selventa.com',
                                   ]
