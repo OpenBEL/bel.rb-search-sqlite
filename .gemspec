@@ -41,14 +41,14 @@ Gem::Specification.new do |spec|
 		# dependencies when building for JRuby (Java based)
 		spec.platform               = 'java'
 		spec.required_ruby_version  = '>= 2.0.0'
-		spec.add_runtime_dependency   'bel',          '~> 1.0.0'
+		spec.add_runtime_dependency   'bel',          '~> 1.1.0'
 		spec.add_runtime_dependency   'sequel',       '4.28.0'
 		spec.add_runtime_dependency   'jdbc-sqlite3', '3.8.11.2'
   else
 		# dependencies when building for all other platforms (C based)
 		spec.platform               = 'ruby'
 		spec.required_ruby_version  = '>= 2.0.0'
-		spec.add_runtime_dependency   'bel',          '~> 1.0.0'
+		spec.add_runtime_dependency   'bel',          '~> 1.1.0'
 		spec.add_runtime_dependency   'sequel',       '4.28.0'
 		spec.add_runtime_dependency   'sqlite3',      '1.3.11'
   end
